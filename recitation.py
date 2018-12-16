@@ -197,6 +197,18 @@ def book_function():
     book_function_params('green', clef='clef1', clef2='clef2')
 
 
+def book_generator():
+    yield 'aaa'
+    yield 'aaa'
+    yield 'b'
+    yield 'c'
+    yield 'aaa'
+
+
+def book_iteration():
+    iterator = book_generator()
+    for a in iterator:
+        print(a)
 
 # transfo_text()
 # transfo_csv()
@@ -220,6 +232,7 @@ def book_function():
 # book_iterable()
 # book_exception()
 # book_function()
+# book_iteration()
 
 
 
@@ -243,6 +256,8 @@ What is an iterable
 What is try/except/raise statement
 What is a context manager
 Fonction: a quoi sert def, default return ? comment fonctionnes les parametres + a quoi faire attention avec default arg
-
+What is a decorator
+What is the system iterator, generator, yield
+What is a package, 
 
 """
