@@ -2,6 +2,8 @@ import csv
 import re
 import datetime
 import copy
+import pdb
+import unittest
 
 
 def transfo_text():
@@ -120,7 +122,7 @@ def book_tuple_list():
 
 def book_string():
     A = 'bob'
-    A += ' l\'éponge'
+    A += " l'éponge"
     print(A)
     print(type(A))
     print(u'\U0001F600 trop styish')
@@ -210,6 +212,75 @@ def book_iteration():
     for a in iterator:
         print(a)
 
+
+class BadInitClass:
+    def __init__(self, items=[]):
+        self.items = items
+
+    def print_items(self):
+        self.items += [3]
+        print("BadInitClass items = {}".format(self.items))
+
+class GoodInitClass:
+    def __init__(self, items = None):
+        if items is None:
+            self.items = []
+        else:
+            self.items = items
+
+    def print_items(self):
+        self.items += [3]
+        print("BadInitClass items = {}".format(self.items))
+
+
+def compare_classes():
+    a = BadInitClass()
+    b = BadInitClass()
+    a.print_items()
+    b.print_items()
+    a = GoodInitClass()
+    b = GoodInitClass()
+    a.print_items()
+    b.print_items()
+
+class StaticClassInstance:
+    static_data = 'bob'
+
+    def __init__(self):
+        self.instance_data = 'hoho'
+        # if not self not accessible outside function __init__
+
+    def print_self(self):
+        print("self.instance_data = {}".format(self.instance_data))
+        self.instance_data += " instance"
+        print("added ' instance' to instance_data\nself.instance_data = {}".format(self.instance_data))
+        #print(static_data) doesn't work
+        print("self.static_data = {}".format(self.static_data))
+        self.static_data += " instance"
+        print("added 'static_data' to static data\nself.static_data = {}".format(self.static_data))
+
+    @classmethod
+    def print_class(cls):
+        cls.static_data += " class"
+        print("cls.static_data = {}".format(cls.static_data))
+
+    @staticmethod
+    def print_nl():
+        print('\ncreation of other instance\n')
+
+
+def static_class_instance():
+    a = StaticClassInstance()
+    a.print_self()
+    a.print_class()
+    a.print_self()
+    a.print_nl()
+    b = StaticClassInstance()
+    b.print_self()
+    b.print_class()
+    b.print_self()
+
+
 # transfo_text()
 # transfo_csv()
 # print(dir())
@@ -233,8 +304,10 @@ def book_iteration():
 # book_exception()
 # book_function()
 # book_iteration()
-
-
+# compare_classes()
+# static_class_instance()
+# pdb.run('compare_classes()')
+help(unittest)
 
 
 
@@ -258,6 +331,10 @@ What is a context manager
 Fonction: a quoi sert def, default return ? comment fonctionnes les parametres + a quoi faire attention avec default arg
 What is a decorator
 What is the system iterator, generator, yield
-What is a package, 
-
+What is a package?
+What is a class, what to pay attention with constructor and what are different variable methods and decorators
+What is an interface
+What is a private member
+How to run pdb?
+How to run unit tests
 """
