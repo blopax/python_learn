@@ -9,11 +9,12 @@ import unittest
 def transfo_text():
     with open('sales1.csv') as f:
         data = f.read()
+        for line in f:
+            print(line)
 
     lines = data.split('\n')
     data_list = []
     for line in lines:
-        print(line)
         data_list.append(line.split(','))
 
     print(data_list)
@@ -136,6 +137,7 @@ def book_dict():
     D = {'a': 'b', 'c': 'd'}
     print(D.get('a',-1), D.get('f', -1), D.get('f'))
     D.setdefault('cc', 33)
+    D.setdefault('c', 33)
     print(D)
 
 
@@ -293,7 +295,6 @@ def static_class_instance():
 # sort()
 # global_ex()
 # is_equal_in()
-
 # book_tuple_list()
 # book_string()
 # book_dict() # how to access dict with no error or set value if doesn't exist
@@ -305,9 +306,10 @@ def static_class_instance():
 # book_function()
 # book_iteration()
 # compare_classes()
-# static_class_instance()
-# pdb.run('compare_classes()')
+
+static_class_instance()
 help(unittest)
+pdb.run('compare_classes()')
 
 
 
@@ -317,11 +319,12 @@ help(unittest)
 """
 Comment ca marche import module --> si besoin pip install
 Pourquoi on utilise is et pourquoi on utilise == , exemple de None
-Expliquer variable reference, objet valeur et q auoi sert del
+Expliquer variable reference, objet valeur et a quoi sert del
 Quels sont les 4 numeric type 
 File open: what are the modes and why. what needs to be done once file open
 How to get information on file (get current position, set curent position relatively or absolutely
-PRopertues of set
+-------> fd.tell() , fd.seek(-2, os.SEEK_CUR),  fd.seek(25)
+Properties of set
 What happens when we do assignement
 How to make a module both importable and runable why does it work?
 Where does import look for modules? how to add directories
